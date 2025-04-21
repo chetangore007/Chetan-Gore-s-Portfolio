@@ -1,0 +1,111 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { Mail, Github, Linkedin } from "lucide-react";
+
+export default function Portfolio() {
+  return (
+    <div className="bg-orange-50 text-brown-900 min-h-screen font-sans">
+      {/* Navbar */}
+      <nav className="flex justify-between items-center p-6 bg-orange-200 shadow-md sticky top-0 z-50">
+        <h1 className="text-2xl font-bold">MyPortfolio</h1>
+        <ul className="flex gap-6 font-medium">
+          <li><a href="#home" className="hover:text-orange-600">Home</a></li>
+          <li><a href="#about" className="hover:text-orange-600">About</a></li>
+          <li><a href="#skills" className="hover:text-orange-600">Skills</a></li>
+          <li><a href="#projects" className="hover:text-orange-600">Projects</a></li>
+          <li><a href="#contact" className="hover:text-orange-600">Contact</a></li>
+        </ul>
+      </nav>
+
+      {/* Home */}
+      <section id="home" className="flex flex-col items-center justify-center text-center h-screen bg-orange-100">
+        <motion.h2 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl font-bold">Hi, I'm [Your Name]</motion.h2>
+        <p className="text-xl mt-4">Frontend Developer | Designer | Learner</p>
+        <div className="mt-6 flex gap-4">
+          <Button variant="default">Hire Me</Button>
+          <Button variant="outline">Download Resume</Button>
+        </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="p-12 bg-orange-50">
+        <h2 className="text-3xl font-bold text-center mb-8">About Me</h2>
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          <img src="/profile.jpg" alt="Profile" className="rounded-2xl shadow-lg w-full" />
+          <div>
+            <p className="mb-4">I'm a passionate web developer with experience in creating responsive and visually appealing websites using HTML, CSS, JavaScript, and React.</p>
+            <ul className="space-y-2">
+              <li><strong>Name:</strong> [Your Name]</li>
+              <li><strong>Age:</strong> 20</li>
+              <li><strong>Email:</strong> your.email@example.com</li>
+              <li><strong>Address:</strong> Your City, Country</li>
+            </ul>
+            <Button className="mt-6">Download Resume</Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills */}
+      <section id="skills" className="p-12 bg-orange-100">
+        <h2 className="text-3xl font-bold text-center mb-8">My Skills</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {[
+            { name: "HTML", level: 90 },
+            { name: "CSS", level: 85 },
+            { name: "JavaScript", level: 80 },
+            { name: "React", level: 75 }
+          ].map(skill => (
+            <div key={skill.name}>
+              <h3 className="text-lg font-semibold">{skill.name}</h3>
+              <div className="w-full bg-orange-300 rounded-full h-4 mt-1">
+                <div className="bg-orange-600 h-4 rounded-full" style={{ width: `${skill.level}%` }}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="p-12 bg-orange-50">
+        <h2 className="text-3xl font-bold text-center mb-8">Projects</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {[1, 2, 3].map(i => (
+            <Card key={i} className="shadow-md">
+              <CardContent className="p-4">
+                <img src={`/project${i}.jpg`} alt={`Project ${i}`} className="rounded-xl mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Project {i}</h3>
+                <div className="flex gap-2">
+                  <Button variant="default">Live Demo</Button>
+                  <Button variant="outline">Source Code</Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="p-12 bg-orange-100">
+        <h2 className="text-3xl font-bold text-center mb-8">Contact Me</h2>
+        <form className="max-w-xl mx-auto space-y-4">
+          <input type="text" placeholder="Your Name" className="w-full p-3 rounded-lg border border-orange-300" />
+          <input type="email" placeholder="Your Email" className="w-full p-3 rounded-lg border border-orange-300" />
+          <textarea rows="5" placeholder="Your Message" className="w-full p-3 rounded-lg border border-orange-300"></textarea>
+          <Button className="w-full">Send Message</Button>
+        </form>
+        <div className="flex justify-center gap-6 mt-8">
+          <a href="#"><Github className="w-6 h-6" /></a>
+          <a href="#"><Linkedin className="w-6 h-6" /></a>
+          <a href="mailto:your.email@example.com"><Mail className="w-6 h-6" /></a>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="text-center p-6 bg-orange-200 mt-6">
+        &copy; 2025 [Your Name]. All rights reserved.
+      </footer>
+    </div>
+  );
+}
